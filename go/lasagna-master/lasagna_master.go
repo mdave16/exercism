@@ -1,7 +1,5 @@
 package lasagna
 
-// import "fmt"
-
 // PreperationTime calculates total preperation time given layers and how long an average layer takes.
 func PreparationTime(layers []string, timePerLayer int) int {
 	if timePerLayer == 0 {
