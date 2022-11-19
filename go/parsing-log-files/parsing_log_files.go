@@ -7,7 +7,7 @@ import (
 
 // IsValidLine determines if text starts with valid log descriptions.
 func IsValidLine(text string) bool {
-	var re = regexp.MustCompile(`^\[(TRC|DBG|INF|WRN|ERR|FTL)\].*`)
+	var re = regexp.MustCompile(`^\[(TRC|DBG|INF|WRN|ERR|FTL)\]`)
 	return re.MatchString(text)
 }
 
@@ -19,14 +19,14 @@ func SplitLogLine(text string) []string {
 
 // CountQuotedPasswords counts lines that reference "password" in quotes.
 func CountQuotedPasswords(lines []string) int {
-	var re = regexp.MustCompile(`".*[pP][aA][sS][sS][wW][oO][rR][dD].*"`)
-	sum := 0
+	var re = regexp.MustCompile(`(?i)".*password.*"`)
+	count := 0
 	for _, log := range lines {
 		if re.MatchString(log) {
-			sum++
+			count++
 		}
 	}
-	return sum
+	return count
 }
 
 // RemoveEndOfLineText removes end-of-line<lineNumber> used by some teams.
