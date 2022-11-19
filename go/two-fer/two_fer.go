@@ -1,15 +1,13 @@
-// This is a "stub" file.  It's a little start on your solution.
-// It's not a complete solution though; you have to write some code.
-
-// Package twofer should have a package comment that summarizes what it's about.
+// TwoFer is short for Two For One, as in One for you and one for me.
 // https://golang.org/doc/effective_go.html#commentary
 package twofer
 
-// ShareWith should have a comment documenting it.
+import "fmt"
+
+// ShareWith returns a string related to sharing.
 func ShareWith(name string) string {
-	// Write some code here to pass the test suite.
-	// Then remove all the stock comments.
-	// They're here to help you get started but they only clutter a finished solution.
-	// If you leave them in, reviewers may protest!
-	return ""
+	if name == "" {
+		name = "you"
+	}
+	return fmt.Sprintf("One for %s, one for me.", name)
 }
