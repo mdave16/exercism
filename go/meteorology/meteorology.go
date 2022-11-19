@@ -30,8 +30,14 @@ const (
 	MilesPerHour SpeedUnit = 1
 )
 
-func (su SpeedUnit) String() string {
-	return []string{"km/h", "mph"}[su]
+func (su SpeedUnit) String() (s string) {
+	switch su {
+	case KmPerHour:
+		s = "km/h"
+	case MilesPerHour:
+		s = "mph"
+	}
+	return
 }
 
 type Speed struct {
