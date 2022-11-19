@@ -5,11 +5,10 @@ import "fmt"
 // Drive drives the car one time. If there is not enough battery to drive one more time,
 // the car will not move.
 func (car *Car) Drive() {
-	if car.battery < car.batteryDrain {
-		return
+	if car.battery >= car.batteryDrain {
+		car.battery -= car.batteryDrain
+		car.distance += car.speed
 	}
-	car.battery -= car.batteryDrain
-	car.distance += car.speed
 }
 
 // DisplayDistance will display the distance currently travelled by the car.
