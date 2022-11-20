@@ -10,12 +10,10 @@ func lettersOnly(word string) string {
 func IsIsogram(word string) bool {
 	var seen = map[rune]bool{}
 	for _, r := range lettersOnly(word) {
-		_, isSeen := seen[r]
-		if isSeen {
+		if _, ok := seen[r]; ok {
 			return false
-		} else {
-			seen[r] = true
 		}
+		seen[r] = true
 	}
 	return true
 }
