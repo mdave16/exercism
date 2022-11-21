@@ -17,11 +17,7 @@ func Valid(id string) bool {
 		if err != nil {
 			return false
 		}
-		if !shouldDouble {
-			shouldDouble = true
-			sum = sum + n
-		} else {
-			shouldDouble = false
+		if shouldDouble {
 			if !validLength {
 				validLength = true
 			}
@@ -29,8 +25,9 @@ func Valid(id string) bool {
 			if n > 9 {
 				n = n - 9
 			}
-			sum = sum + n
 		}
+		shouldDouble = !shouldDouble
+		sum = sum + n
 
 	}
 
