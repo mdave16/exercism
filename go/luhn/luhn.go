@@ -1,5 +1,38 @@
 package luhn
 
+import "strconv"
+
 func Valid(id string) bool {
-	panic("Please implement the Valid function")
+
+	sum := 0
+	shouldDouble := false
+	validLength := false
+
+	for i := 0; i < len(id); i++ {
+		digit := rune(id[len(id)-1-i])
+		if digit == ' ' {
+			continue
+		}
+		n, err := strconv.Atoi(string(digit))
+		if err != nil {
+			return false
+		}
+		if !shouldDouble {
+			shouldDouble = true
+			sum = sum + n
+		} else {
+			shouldDouble = false
+			if !validLength {
+				validLength = true
+			}
+			n = n * 2
+			if n > 9 {
+				n = n - 9
+			}
+			sum = sum + n
+		}
+
+	}
+
+	return validLength && (sum%10 == 0)
 }
