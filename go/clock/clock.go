@@ -15,7 +15,7 @@ func postiveMod(b int) func(int) int {
 var inDay = postiveMod(24 * 60)
 
 func New(h, m int) Clock {
-	return Clock{0}.Add(inDay(h*60 + m))
+	return Clock{}.Add(h*60 + m)
 }
 
 func (c Clock) Add(m int) Clock {
