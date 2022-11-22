@@ -1,28 +1,29 @@
-// This is a "stub" file.  It's a little start on your solution.
-// It's not a complete solution though; you have to write some code.
-
-// Package triangle should have a package comment that summarizes what it's about.
-// https://golang.org/doc/effective_go.html#commentary
 package triangle
 
+import "math"
 
-// Notice KindFromSides() returns this type. Pick a suitable data type.
-type Kind
+type Kind int
 
 const (
-    // Pick values for the following identifiers used by the test program.
-    NaT // not a triangle
-    Equ // equilateral
-    Iso // isosceles
-    Sca // scalene
+	NaT = iota
+	Equ
+	Iso
+	Sca
 )
 
-// KindFromSides should have a comment documenting it.
+// KindFromSides returns what kind of triangle is produced by having three sides of a given length.
 func KindFromSides(a, b, c float64) Kind {
-	// Write some code here to pass the test suite.
-	// Then remove all the stock comments.
-	// They're here to help you get started but they only clutter a finished solution.
-	// If you leave them in, reviewers may protest!
-	var k Kind
-	return k
+	max := math.Max(math.Max(a, b), c)
+	min := math.Min(math.Min(a, b), c)
+	mid := a + b + c - max - min
+	if min+mid <= max {
+		return NaT
+	}
+	if max == min {
+		return Equ
+	}
+	if max == mid || mid == min {
+		return Iso
+	}
+	return Sca
 }
