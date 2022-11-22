@@ -23,7 +23,7 @@ func (c Clock) Add(m int) Clock {
 }
 
 func (c Clock) Subtract(m int) Clock {
-	return Clock{inDay(c.minute - m)}
+	return c.Add(-m)
 }
 
 func (c Clock) String() string {
