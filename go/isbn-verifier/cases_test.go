@@ -16,6 +16,11 @@ var testCases = []struct {
 		expected:    true,
 	},
 	{
+		description: "valid isbn 13",
+		isbn:        "978-3-16-148410-0",
+		expected:    true,
+	},
+	{
 		description: "invalid isbn check digit",
 		isbn:        "3-598-21508-9",
 		expected:    false,
